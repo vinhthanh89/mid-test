@@ -10,17 +10,14 @@ const Calculator = () => {
     
     const handleClickButton = (label) => {
         if (label === 'c') {
-            // Clear all values
             setResult(null);
             setVar1(null);
             setCalculator(null);
             setVar2(null);
           } else if (label === '=') {
-            // Perform the calculation when "=" is clicked
             if (var1 && calculator && var2) {
               const num1 = parseFloat(var1);
-              const num2 = parseFloat(var2);
-      
+              const num2 = parseFloat(var2);     
               switch (calculator) {
                 case '+':
                   setResult(num1 + num2);
@@ -37,26 +34,21 @@ const Calculator = () => {
                 default:
                   setResult(null);
               }
-      
-              // Reset other values for the next calculation
               setVar1(null);
               setCalculator(null);
               setVar2(null);
             }
           } else if ('+-x/'.includes(label)) {
-            // Handle arithmetic operations
             if (var1 && !calculator) {
               setCalculator(label);
             }
           } else {
-            // Handle numeric input
             if (!calculator) {
               setVar1((prevVar1) => (prevVar1 ? prevVar1 + label : label));
             } else {
               setVar2((prevVar2) => (prevVar2 ? prevVar2 + label : label));
             }
           }
-        
     }
 
   return (
@@ -78,7 +70,7 @@ const Calculator = () => {
               <Button label="8" handleClickButton={handleClickButton}/>
               <Button label="9" handleClickButton={handleClickButton}/>
             </div>
-            <div className="button-row">
+            <div className="button-row ">
               <Button label="4" handleClickButton={handleClickButton}/>
               <Button label="5" handleClickButton={handleClickButton}/>
               <Button label="6" handleClickButton={handleClickButton}/>
